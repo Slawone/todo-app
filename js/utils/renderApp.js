@@ -1,9 +1,15 @@
-import title from '../components/title.js';
-import form from '../components/form.js';
+import createTitle from '../components/title.js';
+import createForm from '../components/form.js';
 
 const renderApp = (app) => {
-  app.append(title(3, 'Список дел'));
-  app.append(form());
+  const title = createTitle(3, 'Список покупок');
+  const form = createForm();
+
+  app.append(title, form);
+
+  return {
+    form,
+  };
 };
 
 export default renderApp;
