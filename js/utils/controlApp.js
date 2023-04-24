@@ -1,4 +1,6 @@
-const controlApp = (form) => {
+import createRow from '../components/createRow.js';
+
+const controlApp = (form, table) => {
   const controlForm = (form) => {
     const {input, btnSubmit, btnReset} = form;
 
@@ -12,6 +14,20 @@ const controlApp = (form) => {
     });
 
     btnReset.addEventListener('click', () => {
+      btnSubmit.disabled = true;
+    });
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const formData = new FormData(e.target);
+      const newContact = Object.fromEntries(formData);
+
+      const newRow = createRow(newContact);
+
+      table.tbody.append(newRow);
+
+      form.reset();
       btnSubmit.disabled = true;
     });
   };

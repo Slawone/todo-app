@@ -9,7 +9,7 @@ const createForm = () => {
   const input = document.createElement('input');
   input.type = 'text';
   input.classList.add('form-control');
-  input.name = 'form-input';
+  input.name = 'formInput';
   input.placeholder = 'Ввести задачу';
 
   const btnSubmit = document.createElement('button');

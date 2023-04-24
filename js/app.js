@@ -6,8 +6,8 @@ app.classList.add('vh-100', 'w-100', 'd-flex',
     'align-items-center', 'justify-content-center', 'flex-column');
 
 const init = () => {
-  const {form} = renderApp(app);
-  controlApp(form);
+  const {form, table} = renderApp(app);
+  controlApp(form, table);
 };
 
 init();
