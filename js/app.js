@@ -18,7 +18,7 @@ const init = () => {
   const {form, table} = renderApp(app);
   controlApp(form, table);
 
-  renderTodoList(table, todoArray);
+  renderTodoList(table.tbody, todoArray);
 };
 
 init();
