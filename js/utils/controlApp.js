@@ -1,5 +1,7 @@
 import renderTodoList from '../utils/renderTodoPage.js';
 import {todoArray} from '../app.js';
+import {setTodoData} from './localStorage.js';
+import {name} from '../app.js';
 
 const controlApp = (form, table) => {
   const controlForm = (form) => {
@@ -30,6 +32,8 @@ const controlApp = (form, table) => {
 
       todoArray.push(newContact);
 
+      setTodoData(name, todoArray);
+
       form.reset();
       btnSubmit.disabled = true;
     });
@@ -48,6 +52,7 @@ const controlApp = (form, table) => {
           }
         }
       }
+      setTodoData(name, todoArray);
     });
 
     table.addEventListener('click', e => {
