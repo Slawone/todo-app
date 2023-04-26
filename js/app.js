@@ -15,7 +15,7 @@ export const todoArray = getTodoData(name);
 // localStorage.clear();
 
 const init = () => {
-  const {form, table} = renderApp(app);
+  const {form, table} = renderApp(app, name);
   controlApp(form, table);
 
   renderTodoList(table.tbody, todoArray);

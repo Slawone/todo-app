@@ -1,4 +1,4 @@
-import renderTodoList from '../utils/renderTodoPage.js';
+import renderTodoPage from '../utils/renderTodoPage.js';
 import {todoArray} from '../app.js';
 import {setTodoData} from './localStorage.js';
 import {name} from '../app.js';
@@ -28,7 +28,7 @@ const controlApp = (form, table) => {
 
       newContact.id = todoArray.length + 1;
 
-      renderTodoList(newContact, table.tbody);
+      renderTodoPage(newContact, table.tbody);
 
       todoArray.push(newContact);
 

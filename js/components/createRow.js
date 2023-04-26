@@ -1,9 +1,14 @@
-const createRow = (obj) => {
+const createRow = (obj, index) => {
   const tr = document.createElement('tr');
   tr.classList.add('table-light', 'todo');
 
   const tdId = document.createElement('td');
-  tdId.textContent = obj.id;
+
+  if (index === undefined) {
+    tdId.textContent = obj.id;
+  } else {
+    tdId.textContent = index;
+  }
 
   const tdTask = document.createElement('td');
   tdTask.classList.add('task');

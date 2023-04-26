@@ -1,6 +1,10 @@
-const createTitle = (priority, text) => {
+const createTitle = (priority, text, name) => {
   const title = document.createElement(`h${priority}`);
-  title.textContent = text;
+  if (name) {
+    title.textContent = `${text} - ${name}`;
+  } else {
+    title.textContent = text;
+  }
 
   return title;
 };
