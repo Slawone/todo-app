@@ -27,6 +27,7 @@ const controlApp = (form, table) => {
       const newContact = Object.fromEntries(formData);
 
       newContact.id = todoArray.length + 1;
+      newContact.finished = false;
 
       renderTodoPage(newContact, table.tbody);
 
@@ -64,7 +65,11 @@ const controlApp = (form, table) => {
         tdTask.classList.remove('task');
         tdTask.classList.add('text-decoration-line-through');
         tdStatus.textContent = 'Завершен';
+        todoArray.forEach(item => {
+          item.finished = true;
+        });
       }
+      setTodoData(name, todoArray);
     });
   };
 

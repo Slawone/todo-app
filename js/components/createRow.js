@@ -11,12 +11,20 @@ const createRow = (obj, index) => {
   }
 
   const tdTask = document.createElement('td');
-  tdTask.classList.add('task');
+  // tdTask.classList.add('task');
   tdTask.textContent = obj.formInput;
 
   const tdStatus = document.createElement('td');
   tdStatus.classList.add('status');
-  tdStatus.textContent = 'В процессе';
+  // tdStatus.textContent = 'В процессе';
+
+  if (obj.finished) {
+    tdTask.classList.add('text-decoration-line-through');
+    tdStatus.textContent = 'Завершен';
+  } else {
+    tdTask.classList.add('task');
+    tdStatus.textContent = 'В процессе';
+  }
 
   const tdActions = document.createElement('td');
 
