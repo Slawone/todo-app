@@ -1,27 +1,28 @@
 const createRow = (obj, index) => {
   const tr = document.createElement('tr');
-  tr.classList.add('table-light', 'todo');
+  tr.classList.add('todo');
+  tr.dataset.id = obj.id;
 
   const tdId = document.createElement('td');
 
   if (index === undefined) {
-    tdId.textContent = obj.id;
+    tdId.textContent = obj.num;
   } else {
     tdId.textContent = index;
   }
 
   const tdTask = document.createElement('td');
-  // tdTask.classList.add('task');
   tdTask.textContent = obj.formInput;
 
   const tdStatus = document.createElement('td');
   tdStatus.classList.add('status');
-  // tdStatus.textContent = 'В процессе';
 
   if (obj.finished) {
+    tr.classList.add('table-success');
     tdTask.classList.add('text-decoration-line-through');
     tdStatus.textContent = 'Завершен';
   } else {
+    tr.classList.add('table-light');
     tdTask.classList.add('task');
     tdStatus.textContent = 'В процессе';
   }

@@ -23,10 +23,15 @@ const controlApp = (form, table) => {
     form.addEventListener('submit', e => {
       e.preventDefault();
 
+      const random = Math.random().toString().substring(2, 10);
+
+      console.log(random);
+
       const formData = new FormData(e.target);
       const newContact = Object.fromEntries(formData);
 
-      newContact.id = todoArray.length + 1;
+      newContact.num = todoArray.length + 1;
+      newContact.id = random;
       newContact.finished = false;
 
       renderTodoPage(newContact, table.tbody);
@@ -57,16 +62,19 @@ const controlApp = (form, table) => {
     });
 
     table.addEventListener('click', e => {
+      const tr = e.target.closest('.todo');
+      const tdTask = e.target.closest('.todo').tdTask;
+      const tdStatus = e.target.closest('.todo').tdStatus;
       if (e.target.closest('.btn-end')) {
-        const tdTask = e.target.closest('.todo').tdTask;
-        const tdStatus = e.target.closest('.todo').tdStatus;
-        e.target.closest('.todo').classList.remove('table-light');
-        e.target.closest('.todo').classList.add('table-success');
+        tr.classList.remove('table-light');
+        tr.classList.add('table-success');
         tdTask.classList.remove('task');
         tdTask.classList.add('text-decoration-line-through');
         tdStatus.textContent = 'Завершен';
         todoArray.forEach(item => {
-          item.finished = true;
+          if (item.id === tr.dataset.id) {
+            item.finished = true;
+          }
         });
       }
       setTodoData(name, todoArray);
