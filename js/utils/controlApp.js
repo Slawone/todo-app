@@ -25,12 +25,9 @@ const controlApp = (form, table) => {
 
       const random = Math.random().toString().substring(2, 10);
 
-      console.log(random);
-
       const formData = new FormData(e.target);
       const newContact = Object.fromEntries(formData);
 
-      newContact.num = todoArray.length + 1;
       newContact.id = random;
       newContact.finished = false;
 

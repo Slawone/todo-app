@@ -4,12 +4,7 @@ const createRow = (obj, index) => {
   tr.dataset.id = obj.id;
 
   const tdId = document.createElement('td');
-
-  if (index === undefined) {
-    tdId.textContent = obj.num;
-  } else {
-    tdId.textContent = index;
-  }
+  tdId.textContent = index;
 
   const tdTask = document.createElement('td');
   tdTask.textContent = obj.formInput;
