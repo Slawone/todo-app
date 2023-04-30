@@ -44,13 +44,13 @@ const controlApp = (form, table) => {
 
   const controlTable = (table) => {
     table.addEventListener('click', e => {
-      const formInput = e.target.closest('.todo').tdTask.textContent;
+      const tr = e.target.closest('.todo');
       if (e.target.closest('.btn-del')) {
         e.target.closest('.todo').remove();
 
         for (let i = 0; i < todoArray.length; i += 1) {
           const item = todoArray[i];
-          if (item.formInput === formInput) {
+          if (item.id === tr.dataset.id) {
             todoArray.splice(i, 1);
           }
         }
@@ -60,14 +60,7 @@ const controlApp = (form, table) => {
 
     table.addEventListener('click', e => {
       const tr = e.target.closest('.todo');
-      const tdTask = e.target.closest('.todo').tdTask;
-      const tdStatus = e.target.closest('.todo').tdStatus;
       if (e.target.closest('.btn-end')) {
-        tr.classList.remove('table-light');
-        tr.classList.add('table-success');
-        tdTask.classList.remove('task');
-        tdTask.classList.add('text-decoration-line-through');
-        tdStatus.textContent = 'Завершен';
         todoArray.forEach(item => {
           if (item.id === tr.dataset.id) {
             item.finished = true;
