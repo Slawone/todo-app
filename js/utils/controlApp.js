@@ -5,14 +5,18 @@ import {name} from '../app.js';
 
 const controlApp = (form, table) => {
   const controlForm = (form) => {
-    const {input, btnSubmit, btnReset} = form;
+    const {input, error, btnSubmit, btnReset} = form;
 
     input.addEventListener('input', e => {
       e.preventDefault();
-      if (input.value.length > 0) {
+      if (input.value.length > 0 && !input.value.startsWith(' ')) {
         btnSubmit.disabled = false;
+        error.style.display = 'none';
       } else {
         btnSubmit.disabled = true;
+      }
+      if (input.value.startsWith(' ')) {
+        error.style.display = 'block';
       }
     });
 
@@ -64,6 +68,13 @@ const controlApp = (form, table) => {
         todoArray.forEach(item => {
           if (item.id === tr.dataset.id) {
             item.finished = true;
+          }
+        });
+      }
+      if (e.target.closest('.btn-end')) {
+        todoArray.forEach(item => {
+          if (tr.closest('.table-success') && item.id === tr.dataset.id) {
+            item.finished = false;
           }
         });
       }

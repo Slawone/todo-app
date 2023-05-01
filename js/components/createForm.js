@@ -1,7 +1,7 @@
 const createForm = () => {
   const form = document.createElement('form');
   form.classList.add('d-flex',
-      'align-items-center', 'mb-3');
+      'align-items-start', 'flex-column', 'mb-3');
 
   const label = document.createElement('label');
   label.classList.add('form-group', 'me-3', 'mb-0');
@@ -11,6 +11,12 @@ const createForm = () => {
   input.classList.add('form-control');
   input.name = 'formInput';
   input.placeholder = 'Ввести задачу';
+
+  const error = document.createElement('div');
+  error.classList.add('error');
+  error.textContent = 'Строка не должна начинаться с пробела!';
+  error.style.display = 'none';
+  error.style.color = 'red';
 
   const btnSubmit = document.createElement('button');
   btnSubmit.type = 'submit';
@@ -23,10 +29,15 @@ const createForm = () => {
   btnReset.classList.add('btn', 'btn-warning');
   btnReset.textContent = 'Очистить';
 
+  const formWrapper = document.createElement('div');
+  formWrapper.classList.add('d-flex', 'align-items-start');
+
   label.append(input);
-  form.append(label, btnSubmit, btnReset);
+  formWrapper.append(label, btnSubmit, btnReset);
+  form.append(formWrapper, error);
 
   form.input = input;
+  form.error = error;
   form.btnSubmit = btnSubmit;
   form.btnReset = btnReset;
 
